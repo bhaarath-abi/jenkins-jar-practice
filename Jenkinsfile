@@ -2,6 +2,11 @@
 pipeline {
     agent any
 
+    tools {
+        git 'DefaultGit'
+    }
+
+
     stages {
        stage('checkout') {
           steps {
