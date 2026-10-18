@@ -11,19 +11,19 @@ pipeline {
     
        stage('Compile') {
           steps {
-             sh 'javac -d out YourProgram.java'
+             sh 'javac -d out HelloWorld.java'
           }
        }
 
        stage('Package JAR') {
           steps {
-             sh 'jar cvf YourProgram.jar -C out .'
+             sh 'jar cvf HelloWorld.jar -C out .'
           }
         }
 
         stage('Run JAR') {
            steps {
-              sh 'java -jar YourProgram.jar'
+              sh 'java -jar HelloWorld.jar'
            }
         }
     }
