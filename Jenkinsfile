@@ -2,34 +2,37 @@
 pipeline {
     agent any
 
-    tools {
-        git 'Default'
-    }
-
-
     stages {
-       stage('checkout') {
-          steps {
-             git branch: 'main', url: 'https://github.com/bhaarath-abi/jenkins-jar-practice.git'
-          }
-       }
-    
-       stage('Compile') {
-          steps {
-             sh 'javac -d out HelloWorld.java'
-          }
-       }
+        stage('Sanity Check') {
+            steps {
+                sh '/usr/bin/git --version'
+                sh 'java -version'
+            }
+        }
 
-       stage('Package JAR') {
-          steps {
-             sh 'jar cvf HelloWorld.jar -C out .'
-          }
+        stage('Checkout') {
+            steps {
+                git branch: 'main', url: 'https://github.com/bhaarath-abi/jenkins-jar-practice.git'
+            }
+        }
+
+        stage('Compile') {
+            steps {
+                sh 'mkdir -p out'
+                sh 'javac -d out src/*.java'
+            }
+        }
+
+        stage('Package JAR') {
+            steps {
+                sh 'jar cvf MyApp.jar -C out .'
+            }
         }
 
         stage('Run JAR') {
-           steps {
-              sh 'java -jar HelloWorld.jar'
-           }
+            steps {
+                sh 'java -jar MyApp.jar'
+            }
         }
     }
 }
