@@ -3,7 +3,7 @@ pipeline {
     agent any
 
     tools {
-        git 'DefaultGit'
+        git 'Default'
     }
 
 
