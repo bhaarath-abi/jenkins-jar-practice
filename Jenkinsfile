@@ -29,9 +29,9 @@ pipeline {
             }
         }
 
-        stage('Run JAR') {
+        stage('Run Application') {
             steps {
-                sh 'java -jar HelloWorld.jar'
+                sh 'java -cp HelloWorld.jar HelloWorld'
             }
         }
     }
