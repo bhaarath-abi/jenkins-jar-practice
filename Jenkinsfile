@@ -19,19 +19,19 @@ pipeline {
         stage('Compile') {
             steps {
                 sh 'mkdir -p out'
-                sh 'javac -d out src/*.java'
+                sh 'javac -d out HelloWorld.java'
             }
         }
 
         stage('Package JAR') {
             steps {
-                sh 'jar cvf MyApp.jar -C out .'
+                sh 'jar cvf HelloWorld.jar -C out .'
             }
         }
 
         stage('Run JAR') {
             steps {
-                sh 'java -jar MyApp.jar'
+                sh 'java -jar HelloWorld.jar'
             }
         }
     }
