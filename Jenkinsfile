@@ -31,7 +31,7 @@ pipeline {
 
         stage('Run Application') {
             steps {
-                sh 'java -cp HelloWorld.jar HelloWorld'
+                sh 'nohup java -cp HelloWorld.jar HelloWorld > app.log 2>&1 &'
             }
         }
     }
