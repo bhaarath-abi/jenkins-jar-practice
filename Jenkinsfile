@@ -1,37 +1,13 @@
-//update 4 Jenkinsfile for testing
 pipeline {
     agent any
 
     stages {
-        stage('Sanity Check') {
-            steps {
-                sh '/usr/bin/git --version'
-                sh 'java -version'
-            }
-        }
 
-        stage('Checkout') {
+        stage('Upload Artifact To S3') {
             steps {
-                git branch: 'main', url: 'https://github.com/bhaarath-abi/jenkins-jar-practice.git'
-            }
-        }
-
-        stage('Compile') {
-            steps {
-                sh 'mkdir -p out'
-                sh 'javac -d out HelloWorld.java'
-            }
-        }
-
-        stage('Package JAR') {
-            steps {
-                sh 'jar cvf HelloWorld.jar -C out .'
-            }
-        }
-
-        stage('Run Application') {
-            steps {
-                sh 'nohup java -cp HelloWorld.jar HelloWorld > app.log 2>&1 &'
+                sh '''
+                aws s3 cp HelloWorld.jar s3://git-to-s3artifacts/
+                '''
             }
         }
     }
