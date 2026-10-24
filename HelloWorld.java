@@ -1,4 +1,3 @@
- 
 import com.sun.net.httpserver.HttpServer;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
@@ -7,31 +6,23 @@ public class HelloWorld {
 
     public static void main(String[] args) throws Exception {
 
-        HttpServer server = HttpServer.create(
-            new InetSocketAddress(8081), 0);
+        HttpServer server =
+                HttpServer.create(new InetSocketAddress(8090), 0);
 
         server.createContext("/", exchange -> {
 
             String response =
-                "Hello from Jenkins CI/CD";
+                    "Hello from Jenkins + GitHub + S3 Pipeline";
 
-            exchange.sendResponseHeaders(
-                200,
-                response.length()
-            );
+            exchange.sendResponseHeaders(200, response.length());
 
-            OutputStream os =
-                exchange.getResponseBody();
-
+            OutputStream os = exchange.getResponseBody();
             os.write(response.getBytes());
-
             os.close();
         });
 
         server.start();
 
-        System.out.println(
-            "Web Server Started on Port 8081"
-        );
+        System.out.println("Server started on port 8090");
     }
 }
