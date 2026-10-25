@@ -8,6 +8,7 @@ pipeline {
             steps {
                 sh '''
                 aws s3 cp HelloWorld.jar s3://git-to-s3artifacts/
+                aws s3 cp Dockerfile s3://git-to-s3artifacts/ 
                 '''
             }
         }
