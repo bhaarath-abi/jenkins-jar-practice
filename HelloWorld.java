@@ -12,7 +12,7 @@ public class HelloWorld {
         server.createContext("/", exchange -> {
 
             String response =
-                    "Hello from Jenkins + GitHub + S3 Pipeline";
+                    "Hello from version2";
 
             exchange.sendResponseHeaders(200, response.length());
 
