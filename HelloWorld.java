@@ -12,7 +12,7 @@ public class HelloWorld {
         server.createContext("/", exchange -> {
 
             String response =
-                    "Hello from version3";
+                    "Hello from version4";
 
             exchange.sendResponseHeaders(200, response.length());
 
