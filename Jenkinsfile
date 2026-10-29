@@ -9,7 +9,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh '''
-                javac --release HelloWorld.java
+                javac --release 17 HelloWorld.java
                 jar cvf HelloWorld.jar HelloWorld.class
                 '''
             }
