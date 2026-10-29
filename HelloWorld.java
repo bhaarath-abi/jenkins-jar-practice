@@ -2,7 +2,7 @@ import com.sun.net.httpserver.HttpServer;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
 
-public class HelloWorld {
+public class HelloWorld {{
 
     public static void main(String[] args) throws Exception {
 
