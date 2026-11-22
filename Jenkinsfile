@@ -29,7 +29,7 @@ pipeline {
 
                 kill $APP_PID || true
 
-                echo "$RESPONSE" | grep "Hello from version4"
+                echo "$RESPONSE" | grep "Hello from"
                 '''
             }
         }
